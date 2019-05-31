@@ -72,3 +72,39 @@ class Point{
     }
 }
 }
+{
+import { Component } from '@angular/core';
+import { courseservice } from './component.service';
+@Component({
+  selector: 'app-hedder',
+  template:
+    `<h1>{{Title}}</h1>
+    <h1 [textContent] = 'Title'></h1>
+    <ul>
+<li  *ngFor = 'let c of cc'>{{c}}</li>
+    </ul>
+    <img src = '{{imgURL}}' />
+    <img [src] = "imgURL"/>
+    <button class = "btn btn-primary"[class.active]='isActive'> Save</button>
+    <button  [style.backgroundColor]=" isActive ? 'green': 'white' "></button>
+    `
+          
+ 
+})
+export class HedderComponent  {
+Title = "Courses Are:"
+cc
+isActive = false
+imgURL = 'http://lorempixel.com/900/500'
+constructor(se : courseservice){ 
+// make ts file 
+//   export class courseservice{
+//     gets(){
+//         return ['Biology','Java'];
+//     }
+// }
+//add class in app.module Like >> "providers:[courseservice]"
+this.cc = se.gets();
+}
+}
+}
